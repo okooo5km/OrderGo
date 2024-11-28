@@ -17,12 +17,13 @@
 
 1. 点击下方按钮一键部署到 Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourname%2Fyourrepo)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fokooo5km%2FOrderGo)
 
 2. 在 Vercel 控制台配置以下环境变量:
-   - `DATABASE_URL`: PostgreSQL 数据库连接字符串，格式为 `postgresql://user:password@host:port/database`
-   - `NEXT_PUBLIC_SUPABASE_URL`: Supabase 项目 URL
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Supabase 匿名密钥
-   - `SUPABASE_SERVICE_ROLE_KEY`: Supabase 服务角色密钥
+   - `DB_HOST`: PostgreSQL 数据库主机地址
+   - `DB_PORT`: PostgreSQL 数据库端口
+   - `DB_NAME`: PostgreSQL 数据库名称
+   - `DB_USER`: PostgreSQL 数据库用户名
+   - `DB_PASSWORD`: PostgreSQL 数据库密码
 
 3. 部署完成后，Vercel 会自动运行数据库迁移脚本
