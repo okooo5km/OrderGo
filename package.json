@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:setup": "tsx lib/db/setup.ts",
-    "db:clean": "tsx lib/db/clean.ts",
+    "db:setup": "dotenv -e .env -- tsx lib/db/setup.ts",
+    "db:clean": "dotenv -e .env -- tsx lib/db/clean.ts",
     "db:reset": "npm run db:clean && npm run db:setup"
   },
   "dependencies": {
@@ -45,6 +45,7 @@
     "@types/pg": "^8.11.10",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "dotenv-cli": "^7.4.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
     "eslint-plugin-unused-imports": "^4.1.4",

@@ -19,11 +19,55 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fokooo5km%2FOrderGo)
 
-2. 在 Vercel 控制台配置以下环境变量:
-   - `DB_HOST`: PostgreSQL 数据库主机地址
-   - `DB_PORT`: PostgreSQL 数据库端口
-   - `DB_NAME`: PostgreSQL 数据库名称
-   - `DB_USER`: PostgreSQL 数据库用户名
-   - `DB_PASSWORD`: PostgreSQL 数据库密码
+2. 在 Vercel 控制台配置环境变量:
+   - `DATABASE_URL`: PostgreSQL 数据库连接 URL，格式如下:
+
+     ```
+     postgresql://user:password@host:port/dbname?sslmode=require
+     ```
 
 3. 部署完成后，Vercel 会自动运行数据库迁移脚本
+
+### 本地开发
+
+1. 克隆项目并安装依赖:
+
+   ```bash
+   git clone https://github.com/okooo5km/OrderGo.git
+   cd OrderGo
+   pnpm install
+   ```
+
+2. 复制环境变量配置文件:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. 修改 `.env` 文件中的数据库连接信息
+
+4. 初始化数据库:
+
+   ```bash
+   pnpm run db:setup
+   ```
+
+5. 启动开发服务器:
+
+   ```bash
+   pnpm dev
+   ```
+
+5. 在浏览器中访问 [http://localhost:3000](http://localhost:3000)
+
+## 技术栈
+
+- [Next.js 14](https://nextjs.org/) - React 框架
+- [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
+- [PostgreSQL](https://www.postgresql.org/) - 数据库
+- [shadcn/ui](https://ui.shadcn.com/) - UI 组件库
+- [Vercel](https://vercel.com/) - 部署平台
+
+## 许可证
+
+本项目采用 [MIT](LICENSE) 许可证。
