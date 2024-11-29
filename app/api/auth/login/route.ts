@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true });
     }
     return NextResponse.json({ error: '密码错误' }, { status: 401 });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: '登录失败' }, { status: 500 });
   }
 } 

@@ -19,9 +19,11 @@ export function LoginDialog() {
   const [password, setPassword] = useState("");
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (login(process.env.NEXT_PUBLIC_AUTH_USERNAME || "", password)) {
+    const success = await login(process.env.NEXT_PUBLIC_ADMIN_INITIAL_ID || "", password);
+    
+    if (success) {
       toast({
         title: "登录成功",
         description: "欢迎回来！"
@@ -45,7 +47,7 @@ export function LoginDialog() {
           <div className="flex items-center gap-2 p-3 rounded-lg bg-muted">
             <User className="h-5 w-5 text-muted-foreground" />
             <span className="font-medium">
-              {process.env.NEXT_PUBLIC_AUTH_USERNAME}
+              {process.env.NEXT_PUBLIC_ADMIN_INITIAL_ID}
             </span>
           </div>
           <div className="space-y-2">

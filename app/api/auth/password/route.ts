@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     await userService.updatePassword(username, newPassword);
     
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: '修改密码失败' }, { status: 500 });
   }
 } 

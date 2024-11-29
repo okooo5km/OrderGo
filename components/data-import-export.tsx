@@ -73,7 +73,7 @@ order_item,1,,,,,,,ORD-2024-001,,,,2,1`;
         title: "导出成功",
         description: "数据已成功导出为 CSV 文件"
       });
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "导出失败",
         description: "导出数据时出现错误",
@@ -184,7 +184,7 @@ order_item,1,,,,,,,ORD-2024-001,,,,2,1`;
         title: "导入成功",
         description: "数据已成功导入系统"
       });
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "导入失败",
         description: "导入数据时出现错误",

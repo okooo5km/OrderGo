@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { checkPasswordStrength, getPasswordStrengthColor, getPasswordStrengthText } from "@/lib/utils/password";
+import { checkPasswordStrength, getPasswordStrengthColor, getPasswordStrengthText, PasswordStrength } from "@/lib/utils/password";
 
 export function ChangePassword() {
   const { username } = useAuth();
@@ -15,7 +15,11 @@ export function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [strength, setStrength] = useState({ isValid: false, score: 0, messages: [] });
+  const [strength, setStrength] = useState<PasswordStrength>({
+    isValid: false,
+    score: 0,
+    messages: []
+  });
   const [isConfirmValid, setIsConfirmValid] = useState(true);
 
   // 检查密码强度
@@ -83,7 +87,7 @@ export function ChangePassword() {
           variant: "destructive"
         });
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "修改失败",
         description: "请稍后重试",
