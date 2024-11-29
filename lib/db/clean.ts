@@ -8,7 +8,8 @@ async function cleanDatabase() {
         order_items,
         orders,
         models,
-        categories
+        categories,
+        users
       CASCADE;
     `)
     console.log('数据库清理成功')

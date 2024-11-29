@@ -2,11 +2,11 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DataImportExport } from "@/components/data-import-export";
+import { ChangePassword } from "@/components/admin/change-password";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 export default function AdminPage() {
-  // 在移动端直接重定向到首页
   useEffect(() => {
     if (window.innerWidth < 1024) {
       redirect("/");
@@ -15,7 +15,8 @@ export default function AdminPage() {
 
   return (
     <div className="hidden lg:block p-8">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto space-y-6">
+        <ChangePassword />
         <Card>
           <CardHeader>
             <CardTitle>数据管理</CardTitle>

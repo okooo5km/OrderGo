@@ -1,32 +1,27 @@
 import { query } from './index'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import { userService } from '../services/users'
 
 async function setupDatabase() {
   try {
     // 读取 SQL 文件
     const sqlFile = readFileSync(join(process.cwd(), 'lib/db/init.sql'), 'utf8')
     
-    // 执行 SQL 语句
+    // 执行 SQL 语句创建表
     await query(sqlFile)
     
-    // 创建库存历史表
-    await query(`
-      CREATE TABLE IF NOT EXISTS stock_history (
-        id SERIAL PRIMARY KEY,
-        model_id INTEGER NOT NULL REFERENCES models(id) ON DELETE CASCADE,
-        type VARCHAR(10) NOT NULL CHECK (type IN ('in', 'out')),
-        quantity INTEGER NOT NULL,
-        reason TEXT NOT NULL,
-        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-        CONSTRAINT positive_quantity CHECK (quantity > 0)
-      );
-    `);
+    console.log('创建数据表成功')
     
-    // 插入一些测试数据
+    // 初始化管理员用户
+    await userService.initialize()
+    console.log('初始化管理员用户成功')
+    
+    // 插入测试数据
     await insertTestData()
+    console.log('插入测试数据成功')
     
-    console.log('数据库初始化成功')
+    console.log('数据库初始化完成')
   } catch (error) {
     console.error('数据库初始化失败:', error)
     process.exit(1)

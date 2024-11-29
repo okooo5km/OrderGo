@@ -4,8 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ClipboardList, Boxes, PackageSearch, Settings } from "lucide-react";
+import { ClipboardList, Boxes, PackageSearch, Settings, LogOut } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useAuth } from "@/hooks/use-auth";
+import { Button } from "@/components/ui/button";
 
 const sidebarNavItems = [
   {
@@ -60,6 +62,8 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
 }
 
 export function MainSidebar() {
+  const { logout } = useAuth();
+
   return (
     <div className="hidden lg:block h-full">
       <div className="flex flex-col h-full">
@@ -69,8 +73,11 @@ export function MainSidebar() {
             <SidebarNav items={sidebarNavItems} />
           </div>
         </ScrollArea>
-        <div className="p-4 border-t">
+        <div className="p-4 border-t flex justify-between items-center">
           <ThemeToggle />
+          <Button variant="ghost" size="icon" onClick={logout}>
+            <LogOut className="h-4 w-4" />
+          </Button>
         </div>
       </div>
     </div>
