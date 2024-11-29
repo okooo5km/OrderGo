@@ -5,17 +5,17 @@ export const userService = {
   async initialize() {
     // 检查是否已有管理员用户
     const result = await query('SELECT * FROM users WHERE username = $1', [
-      process.env.NEXT_PUBLIC_AUTH_USERNAME
+      process.env.NEXT_PUBLIC_ADMIN_INITIAL_ID
     ]);
 
     if (result.rows.length === 0) {
       // 创建初始管理员用户
       const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(process.env.NEXT_PUBLIC_AUTH_PASSWORD || '', salt);
+      const hash = await bcrypt.hash(process.env.NEXT_PUBLIC_ADMIN_INITIAL_KEY || '', salt);
       
       await query(
         'INSERT INTO users (username, password_hash, is_admin) VALUES ($1, $2, true)',
-        [process.env.NEXT_PUBLIC_AUTH_USERNAME, hash]
+        [process.env.NEXT_PUBLIC_ADMIN_INITIAL_ID, hash]
       );
     }
   },

@@ -21,8 +21,8 @@
 
 2. 在 Vercel 控制台配置环境变量:
    - `DATABASE_URL`: PostgreSQL 数据库连接 URL
-   - `NEXT_PUBLIC_AUTH_USERNAME`: 管理员用户名
-   - `NEXT_PUBLIC_AUTH_PASSWORD`: 管理员密码
+   - `NEXT_PUBLIC_ADMIN_INITIAL_ID`: 初始管理员账号
+   - `NEXT_PUBLIC_ADMIN_INITIAL_KEY`: 初始管理员密码
 
 3. 部署完成后，Vercel 会自动运行数据库迁移脚本
 
